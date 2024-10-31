@@ -1,0 +1,21 @@
+<?php
+include "../connect.php";
+
+$notes_title    =   filterRequest("notes_title");
+$notes_content  =   filterRequest("notes_content");
+$notes_users        =   filterRequest("notes_users");
+$notes_image    =   fileUpload("file");
+
+if ($notes_image != 'Fail') {
+
+    $stmt = $con->prepare("INSERT INTO `notes`(`notes_title`, `notes_content`,`notes_image`, `notes_users`) VALUES (?,?,?,?)");
+    $stmt->execute(array($notes_title, $notes_content,$notes_image, $notes_users));
+    $count = $stmt->rowCount();
+    if ($count > 0) {
+        echo json_encode(array("status" => "Success"));
+    } else {
+        echo json_encode(array("status" => "Fail"));
+    }
+} else {
+    echo json_encode(array("status" => "Fail"));
+}
