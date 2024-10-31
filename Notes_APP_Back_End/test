@@ -1,0 +1,27 @@
+<?php
+
+
+/*$filename = "image.txt";
+$strtoarray = explode(".", $filename);
+$ext = end($strtoarray);
+$allowExt = array("jpg","png","gif");
+if(in_array($ext,$allowExt)){
+    echo "yes";
+}else{
+    echo "no";
+}
+*/
+/*
+$file = $_FILES['file'];
+echo "<pre>";
+print_r($_FILES['file']);
+echo "</pre>";*/
+ 
+include "connect.php";
+
+fileUpload("file");
+
+
+
+
+?>
